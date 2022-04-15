@@ -11,7 +11,6 @@ C:\Users\Sava\Desktop\praksa_proj\HRPlatform\HRPlatform\bin\Debug\net5.0\Microso
 C:\Users\Sava\Desktop\praksa_proj\HRPlatform\HRPlatform\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Sava\Desktop\praksa_proj\HRPlatform\HRPlatform\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Sava\Desktop\praksa_proj\HRPlatform\HRPlatform\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Sava\Desktop\praksa_proj\HRPlatform\HRPlatform\obj\Debug\net5.0\HRPlatform.csproj.AssemblyReference.cache
 C:\Users\Sava\Desktop\praksa_proj\HRPlatform\HRPlatform\obj\Debug\net5.0\HRPlatform.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Sava\Desktop\praksa_proj\HRPlatform\HRPlatform\obj\Debug\net5.0\HRPlatform.AssemblyInfoInputs.cache
 C:\Users\Sava\Desktop\praksa_proj\HRPlatform\HRPlatform\obj\Debug\net5.0\HRPlatform.AssemblyInfo.cs

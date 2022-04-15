@@ -10,7 +10,10 @@ namespace HRPlatform.Services
     {
         bool AddCandidate(Candidate candidate);
         bool AddSkill(Skill skill);
-        bool UpdateCandidate(Candidate candidate, Skill skill);
-
+        bool UpdateCandidate(int candidateId,int skillId);
+        bool RemoveSkillFromCandidate(int candidateId, int skillId);
+        bool RemoveCandidate(int id);
+        List<Candidate> SearchByName(string name);
+        List<Candidate> SearchBySkill(string name);
     }
 }

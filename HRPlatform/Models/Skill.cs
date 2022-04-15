@@ -10,6 +10,6 @@ namespace HRPlatform.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual IList<Candidate> Candidates { get; set; }
+        public IList<Candidate> Candidates { get; set; } = new List<Candidate>();
     }
 }

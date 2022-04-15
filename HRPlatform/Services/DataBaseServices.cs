@@ -1,5 +1,6 @@
 ﻿using HRPlatform.Helper;
 using HRPlatform.Models;
+using HRPlatform.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace HRPlatform.Services
     public class DataBaseServices : IDataBaseServices
     {
         private readonly IHrPlatformRepository _hrPlatformRepository;
-        private IEmailValidator _emailValidator;
-        private IPhoneValidator _phoneValidator;
+        private readonly IEmailValidator _emailValidator;
+        private readonly IPhoneValidator _phoneValidator;
 
         public DataBaseServices(IHrPlatformRepository hrPlatformRepository, IEmailValidator emailValidator, IPhoneValidator phoneValidator)
         {
@@ -19,7 +20,7 @@ namespace HRPlatform.Services
             _emailValidator = emailValidator;
             _phoneValidator = phoneValidator;
         }
-        public bool AddCandidate(Candidate candidate)//provera mail i broj tf
+        public bool AddCandidate(Candidate candidate)
         {
             if (_emailValidator.IsValid(candidate.Email) && _phoneValidator.IsValid(candidate.ContactNumber) && !_hrPlatformRepository.ExistingEmail(candidate.Email) && !_hrPlatformRepository.ExistingPhoneNumber(candidate.ContactNumber))
             {
@@ -31,7 +32,7 @@ namespace HRPlatform.Services
 
         public bool AddSkill(Skill skill)
         {
-            if (!_hrPlatformRepository.ExistingSkill(skill.Name))//preko id-a
+            if (!_hrPlatformRepository.ExistingSkill(skill.Id))
             {
                 _hrPlatformRepository.AddSkill(skill);
                 return true;
@@ -39,37 +40,43 @@ namespace HRPlatform.Services
             return false;
         }
 
-        public bool UpdateCandidate(Candidate candidate, Skill skill)
+        public bool UpdateCandidate(int candidateId, int skillId)
         {
-            if (_hrPlatformRepository.ExistingCandidate(candidate))
+            if (_hrPlatformRepository.ExistingCandidate(candidateId))
             {
-                _hrPlatformRepository.UpdateSkill(candidate, skill);
+                _hrPlatformRepository.UpdateSkill(candidateId, skillId);
                 return true;
             }
             return false;
         }
 
-        public bool RemoveSkill(Candidate candidate, Skill skill)
+        public bool RemoveSkillFromCandidate(int candidateId, int skillId)
         {
-            if (candidate.Skills.Contains(skill))
+            if (_hrPlatformRepository.RemoveSkill(candidateId, skillId))
             {
-                _hrPlatformRepository.RemoveSkill(candidate, skill);
                 return true;
             }
             return false;
         }
 
-        public bool RemoveCandidate(Candidate candidate)
+        public bool RemoveCandidate(int id)
         {
-            if (_hrPlatformRepository.ExistingCandidate(candidate))
+            if (_hrPlatformRepository.ExistingCandidate(id))
             {
-                _hrPlatformRepository.RemoveCandidate(candidate);
+                _hrPlatformRepository.RemoveCandidate(id);
                 return true;
             }
             return false;
         }
 
-        /*public bool SearchByCandidate(string name)
-        public bool SearchBySkill()*/
+        public List<Candidate> SearchByName(string name)
+        {
+            return _hrPlatformRepository.GetByCandidate(name);
+        }
+
+        public List<Candidate> SearchBySkill(string name)
+        {
+            return _hrPlatformRepository.GetBySkill(name);
+        }
     }
 }
