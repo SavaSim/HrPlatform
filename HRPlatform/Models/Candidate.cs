@@ -14,7 +14,7 @@ namespace HRPlatform.Models
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
         public string ContactNumber { get; set; }
-        public virtual ICollection<Skill> Skills { get; set; }
+        public virtual IList<Skill> Skills { get; set; } = new List<Skill>();
 
     }
 }
